@@ -1,0 +1,442 @@
+/* =============================================
+   GLOBAL STYLES — Birthday Gift Website
+   ============================================= */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --font-display: 'Caveat', cursive;
+  --font-body: 'Nunito', sans-serif;
+  --bg-light: #eceeef;       
+  --red-main: #da292e;       
+  --text-dark: #222222;
+  --white: #ffffff;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  background-color: var(--bg-light);
+}
+
+body {
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+.handwritten {
+  font-family: var(--font-display);
+}
+
+.text-xl {
+  font-size: clamp(2rem, 5vw, 3rem);
+  color: var(--text-dark);
+}
+
+.gift-page {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.screen {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.6s ease, transform 0.6s ease, visibility 0.6s;
+}
+
+.screen.visible {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  visibility: visible;
+  z-index: 10;
+}
+
+.screen.hidden {
+  opacity: 0;
+  transform: scale(0.95) translateY(20px);
+  visibility: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.screen.exit {
+  opacity: 0;
+  transform: scale(1.05) translateY(-30px);
+  visibility: hidden;
+}
+
+/* =============================================
+   SCREEN 1: INTRO (الظرف)
+   ============================================= */
+.intro-screen {
+  background-color: var(--bg-light);
+  cursor: pointer;
+}
+
+.intro-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.envelope-wrapper {
+  margin: 10px 0;
+  transition: transform 0.3s ease;
+}
+
+.intro-screen:hover .envelope-wrapper {
+  transform: scale(1.05);
+}
+
+.click-hint {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  color: #888;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+/* =============================================
+   SCREEN 2: MESSAGE CARD
+   ============================================= */
+.card-screen {
+  background-color: var(--bg-light);
+}
+
+.red-card {
+  background-color: var(--red-main);
+  border-radius: 16px;
+  color: var(--white);
+  box-shadow: 0 10px 30px rgba(218, 41, 46, 0.3);
+}
+
+.from-to-card {
+  width: 90%;
+  max-width: 850px; 
+  min-height: 400px; 
+  padding: 50px 60px; 
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-header {
+  font-size: 2.2rem; /* ✨ تم تعديل الحجم ليطابق "Happy Birthday" */
+  margin-bottom: 20px;
+  line-height: 1.2;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.card-body .mb-2 {
+  font-size: 2.2rem; /* ✨ تم تكبير الكلمة لتطابق حجم From و To */
+}
+
+.card-body .message-text {
+  font-size: 1.4rem; /* نص الرسالة يظل بنفس الحجم الأصغر */
+  line-height: 1.5;
+  margin-bottom: 30px;
+}
+
+.card-footer {
+  text-align: center;
+}
+
+.see-attachment {
+  background: transparent;
+  border: none;
+  color: var(--white);
+  font-size: 1.6rem;
+  text-decoration: underline;
+  cursor: pointer;
+  transition: opacity 0.3s;
+}
+
+.see-attachment:hover {
+  opacity: 0.8;
+}
+
+/* =============================================
+   SCREEN 3: BIRTHDAY
+   ============================================= */
+.birthday-screen {
+  background-color: var(--red-main);
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.birthday-inner {
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 0;
+}
+
+.birthday-image-wrapper {
+  width: 250px;
+  height: 250px;
+  position: relative;
+  margin-bottom: 30px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.birthday-image {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.birthday-text-container {
+  color: var(--white);
+  text-align: center;
+}
+
+.birthday-text-container .title {
+  font-size: 2.2rem;
+  margin-bottom: 15px;
+}
+
+.birthday-text-container .paragraph {
+  font-size: 1.4rem;
+  line-height: 1.5;
+  opacity: 0.95;
+}
+
+.next-arrow {
+  background: transparent;
+  border: none;
+  color: var(--white);
+  font-size: 3rem;
+  margin-top: 30px;
+  cursor: pointer;
+  animation: bounceRight 2s infinite;
+}
+
+@keyframes bounceRight {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(10px); }
+}
+
+/* =============================================
+   SCREEN 4: COLLAGE
+   ============================================= */
+.collage-screen {
+  background-color: var(--bg-light);
+  overflow-y: auto;
+}
+
+.collage-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+  width: 100%;
+  max-width: 500px;
+}
+
+.title-dark {
+  font-size: 3rem;
+  color: var(--red-main);
+  margin-bottom: 30px;
+}
+
+.pics-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  width: 100%;
+  margin-bottom: 40px;
+}
+
+.pic-frame {
+  position: relative;
+  aspect-ratio: 1;
+  background: var(--white);
+  padding: 8px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transform: rotate(calc(var(--rot, 0) * 1deg));
+}
+
+.pic-frame:nth-child(odd) { --rot: -2; }
+.pic-frame:nth-child(even) { --rot: 2; }
+
+.collage-img-inner {
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.next-button {
+  background: var(--red-main);
+  color: var(--white);
+  border: none;
+  padding: 12px 30px;
+  border-radius: 30px;
+  font-size: 1.2rem;
+  font-family: var(--font-body);
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(218, 41, 46, 0.4);
+  transition: transform 0.3s;
+}
+
+.next-button:hover {
+  transform: translateY(-3px);
+}
+
+/* =============================================
+   SCREEN 5: MUSIC PLAYER
+   ============================================= */
+.music-screen {
+  background-color: var(--bg-light);
+}
+
+.music-player-card {
+  background-color: var(--red-main);
+  width: 90%;
+  max-width: 400px;
+  border-radius: 24px;
+  padding: 40px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 15px 40px rgba(218, 41, 46, 0.35);
+}
+
+.album-art {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%; /* ✨ عادت للدائرة هنا */
+  overflow: hidden;
+  border: 4px solid rgba(255, 255, 255, 0.2);
+  margin-bottom: 25px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.album-img {
+  object-fit: cover;
+}
+
+.song-title {
+  color: var(--white);
+  font-size: 2rem;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+/* ✨ حاوية الشريط والوقت */
+.slider-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.time-text {
+  font-family: var(--font-body);
+  color: var(--white);
+  font-size: 0.9rem;
+  min-width: 35px;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* شريط التمرير */
+.progress-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  flex: 1;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  outline: none;
+  cursor: pointer;
+  background-image: linear-gradient(var(--white), var(--white));
+  background-repeat: no-repeat;
+}
+
+.progress-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--white);
+  cursor: pointer;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  transition: transform 0.1s;
+}
+
+.progress-slider::-webkit-slider-thumb:active {
+  transform: scale(1.2);
+}
+
+.progress-slider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--white);
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  transition: transform 0.1s;
+}
+
+.progress-slider::-moz-range-thumb:active {
+  transform: scale(1.2);
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.play-btn {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--white);
+  color: var(--red-main);
+  border: none;
+  font-size: 1.8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  transition: transform 0.2s;
+}
+
+.play-btn:active {
+  transform: scale(0.95);
+}
+
+.mb-2 { margin-bottom: 0.5rem; }
+.mb-4 { margin-bottom: 1rem; }
+.text-center { text-align: center; }
+.text-white { color: var(--white); }
