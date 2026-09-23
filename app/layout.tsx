@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     description: 'A heartfelt birthday message just for you.',
     images: [
       {
-        url: '/images/share-cover.png', // 👈 حط الصورة بتاعتك في فولدر images بالاسم ده
+        url: '/images/share-cover.png', // 👈 تأكد من وجود الصورة بهذا الاسم والامتداد في مجلد images
         width: 1200,
         height: 630,
         alt: 'A Special Gift',
