@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
-
 import './globals.css'
+
 export const metadata: Metadata = {
   title: 'A Special Gift For You 🎁',
   description: 'A heartfelt birthday message just for you.',
@@ -9,7 +9,8 @@ export const metadata: Metadata = {
     description: 'A heartfelt birthday message just for you.',
     images: [
       {
-        url: '/images/share-cover.png', // 👈 تأكد من وجود الصورة بهذا الاسم والامتداد في مجلد images
+        // 👇 حطينا اللينك الكامل للموقع هنا
+        url: 'https://loveyouuu-lyart.vercel.app/images/share-cover.png', 
         width: 1200,
         height: 630,
         alt: 'A Special Gift',
