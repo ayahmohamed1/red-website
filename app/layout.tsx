@@ -4,6 +4,18 @@ import './globals.css'
 export const metadata: Metadata = {
   title: 'A Special Gift For You 🎁',
   description: 'A heartfelt birthday message just for you.',
+  openGraph: {
+    title: 'A Special Gift For You 🎁',
+    description: 'A heartfelt birthday message just for you.',
+    images: [
+      {
+        url: '/images/share-cover.png', // 👈 حط الصورة بتاعتك في فولدر images بالاسم ده
+        width: 1200,
+        height: 630,
+        alt: 'A Special Gift',
+      },
+    ],
+  },
 }
 
 export default function RootLayout({
