@@ -1,30 +1,19 @@
 import { notFound } from 'next/navigation'
 import giftData from '@/lib/giftData'
 import GiftClient from '@/components/GiftClient'
-import type { Metadata } from 'next'
-
-interface PageProps {
-  params: { id: string }
-}
-
-// Generate metadata per gift
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export function generateMetadata({ params }: { params: { id: string } }) {
   const data = giftData[params.id.toLowerCase()]
   if (!data) return { title: 'Gift Not Found' }
+  
   return {
-    title: `Happy Birthday ${data.name}! 🎂`,
-    description: `A special birthday message for ${data.name}`,
+    title: `Happy Birthday ${data.receiverName}! 🎂`,
+    description: `A special birthday message for ${data.receiverName}`,
   }
 }
 
-export default function GiftPage({ params }: PageProps) {
-  const id = params.id.toLowerCase()
-  const data = giftData[id]
-
-  // Show 404 if ID doesn't exist in data
-  if (!data) {
-    notFound()
-  }
-
+export default function GiftPage({ params }: { params: { id: string } }) {
+  const data = giftData[params.id.toLowerCase()]
+  if (!data) return notFound()
+  
   return <GiftClient data={data} />
 }

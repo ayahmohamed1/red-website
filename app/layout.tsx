@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
+// @ts-expect-error TypeScript may not have a declaration for global CSS imports.
 import './globals.css'
-
 export const metadata: Metadata = {
   title: 'A Special Gift For You 🎁',
   description: 'A heartfelt birthday message just for you.',
