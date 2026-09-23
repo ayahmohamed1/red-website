@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation'
 import giftData from '@/lib/giftData'
 import GiftClient from '@/components/GiftClient'
+
 export function generateMetadata({ params }: { params: { id: string } }) {
   const data = giftData[params.id.toLowerCase()]
   if (!data) return { title: 'Gift Not Found' }
